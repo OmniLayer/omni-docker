@@ -1,0 +1,15 @@
+= Omni Docker Project
+Sean Gilligan <https://github.com/msgilligan>
+v0.0.1
+:description: Omni Docker README document.
+:omnidocker-version: 0.0.1
+
+[WARNING]
+This software is EXPERIMENTAL software for **REGTEST and TESTNET TRANSACTIONS** only. *USE ON MAINNET AT YOUR OWN RISK.*
+
+[CAUTION]
+This is pre-release software and APIs may change without notice.
+
+== Omni Docker
+
+Docker tools for Omni Core (and eventually) other Omni Components.
