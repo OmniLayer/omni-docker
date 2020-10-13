@@ -13,3 +13,10 @@ This is pre-release software and APIs may change without notice.
 == Omni Docker
 
 Docker tools for Omni Core (and eventually) other Omni Components.
+
+
+
+== Credits
+
+* Thanks to https://github.com/ruimarinho[@ruimarinho] for https://github.com/ruimarinho/docker-bitcoin-core[ruimarinho/docker-bitcoin-core] which
+ was used as a starting point for our Omni Core Dockerfile.
