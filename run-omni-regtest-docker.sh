@@ -7,7 +7,6 @@ docker run --rm --name omnicored-regtest -it \
   -debug=1 \
   -regtest=1 \
   -txindex=1 \
-  -rpcport=18443 \
   -omnialertallowsender=any \
   -omniactivationallowsender=any \
   -rpcserialversion=0 \
