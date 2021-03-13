@@ -20,7 +20,9 @@ docker run --rm --name omnicored-regtest -it \
   -minrelaytxfee=0.00001 \
   -listenonion=false \
   -zmqpubrawblock=tcp://0.0.0.0:38443 \
+  -zmqpubhashblock=tcp://0.0.0.0:38443 \
   -zmqpubrawtx=tcp://0.0.0.0:38444 \
+  -zmqpubhashtx=tcp://0.0.0.0:38444 \
   -rpcallowip=172.17.0.0/16 \
   -rpcbind=0.0.0.0 \
   -rpcuser=bitcoinrpc \
