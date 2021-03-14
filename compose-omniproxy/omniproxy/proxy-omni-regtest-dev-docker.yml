@@ -1,0 +1,41 @@
+micronaut:
+  http:
+    client:
+      read-timeout: 600s
+
+btcproxyd:
+  rpcproxy:
+    network-id: org.bitcoin.regtest
+    uri: http://host.docker.internal:18443
+    username: ""
+    password: ""
+    use-zmq: true
+    allow-list:
+      - getblockcount
+      - getchaintips
+      - getbestblockhash
+      - getblockchaininfo
+      - getblockstats
+      - gettxoutsetinfo
+      - uptime
+      - help
+      - getrpcinfo
+      - getmemoryinfo
+      - getnetworkinfo
+      - getnettotals
+      - getpeerinfo
+      - getzmqnotifications
+      - listbanned
+      - listunspent
+      - ping
+      - scantxoutset
+      - omni_listproperties
+      - omni_getproperty
+      - omniproxy.getrichlist
+      - omniproxy.listproperties
+      - omniproxy.getproperty
+      - generate
+      - generatetoaddress
+
+omniproxyd:
+  enabled: true

@@ -1,0 +1,55 @@
+version: '3.9'
+
+services:
+
+  omnicore:
+    image: omnilayer/omnicored:0.9.0
+    restart: "no"
+    ports:
+      - 18443:18443
+      - 18444:18444
+      - 38443:38443
+      - 38444:38444
+    command:
+      -printtoconsole
+      -debug=1
+      -regtest=1
+      -txindex=1
+      -omnialertallowsender=any
+      -omniactivationallowsender=any
+      -rpcserialversion=0
+      -addresstype=legacy
+      -limitancestorcount=750
+      -limitdescendantcount=750
+      -deprecatedrpc=generate
+      -paytxfee=0.00001
+      -minrelaytxfee=0.00001
+      -listenonion=false
+      -zmqpubrawblock=tcp://0.0.0.0:38443
+      -zmqpubhashblock=tcp://0.0.0.0:38443
+      -zmqpubrawtx=tcp://0.0.0.0:38444
+      -zmqpubhashtx=tcp://0.0.0.0:38444
+      -rpcallowip=$RPCALLOWIP
+      -rpcbind=0.0.0.0
+      -rpcuser=$RPCUSER
+      -rpcpassword=$RPCPASSWORD
+    environment:
+      RPCALLOWIP:
+      RPCUSER:
+      RPCPASSWORD:
+ 
+  omniproxy:
+    image: consensusj/btcproxyd:0.1.8
+    restart: "no"
+    ports:
+      - 8080:8080
+    volumes:
+      - ./omniproxy:/etc/btcproxyd
+    environment:
+      MICRONAUT_CONFIG_FILES: /etc/btcproxyd/proxy-omni-regtest-dev-docker.yml
+      BTCPROXYD_RPCPROXY_USERNAME:
+      BTCPROXYD_RPCPROXY_PASSWORD:
+    depends_on:
+      - omnicore
+    links:
+      - omnicore:omnicore
