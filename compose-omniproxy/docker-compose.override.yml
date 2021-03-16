@@ -1,0 +1,41 @@
+version: '3.9'
+
+#
+# Override settings for RegTest
+# Specifies the correct ports, command-line options for Omni Core, and the configuration YAML 
+# file for btcproxyd.
+#
+
+services:
+  omnicore:
+    ports:
+      - 18443:18443
+      - 18444:18444
+      - ${ZMQ_BLOCK_PORT:-38443}:${ZMQ_BLOCK_PORT:-38443}
+      - ${ZMQ_TX_PORT:-38444}:${ZMQ_TX_PORT:-38444}
+    command:
+      -printtoconsole
+      -debug=1
+      -regtest=1
+      -txindex=1
+      -omnialertallowsender=any
+      -omniactivationallowsender=any
+      -rpcserialversion=0
+      -addresstype=legacy
+      -limitancestorcount=750
+      -limitdescendantcount=750
+      -deprecatedrpc=generate
+      -paytxfee=0.00001
+      -minrelaytxfee=0.00001
+      -listenonion=false
+      -zmqpubrawblock=tcp://0.0.0.0:${ZMQ_BLOCK_PORT:-38443}
+      -zmqpubhashblock=tcp://0.0.0.0:${ZMQ_BLOCK_PORT:-38443}
+      -zmqpubrawtx=tcp://0.0.0.0:${ZMQ_TX_PORT:-38444}
+      -zmqpubhashtx=tcp://0.0.0.0:${ZMQ_TX_PORT:-38444}
+      -rpcallowip=$RPCALLOWIP
+      -rpcbind=0.0.0.0
+      -rpcuser=$RPCUSER
+      -rpcpassword=$RPCPASSWORD
+  omniproxy:
+    environment:
+      MICRONAUT_CONFIG_FILES: /etc/btcproxyd/proxy-omni-regtest-dev.yml

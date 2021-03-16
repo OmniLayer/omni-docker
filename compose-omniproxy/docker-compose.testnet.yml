@@ -1,0 +1,33 @@
+version: '3.9'
+
+#
+# Override settings for Testnet
+# Specifies the correct ports, command-line options for Omni Core, and the configuration YAML 
+# file for btcproxyd.
+#
+
+services:
+  omnicore:
+    ports:
+      - 18332:18332
+      - 18333:18333
+      - ${ZMQ_BLOCK_PORT:-38332}:${ZMQ_BLOCK_PORT:-38332}
+      - ${ZMQ_TX_PORT:-38333}:${ZMQ_TX_PORT:-38333}
+    command:
+      -printtoconsole
+      -testnet
+      -txindex=1
+      -rpcserialversion=0
+      -addresstype=legacy
+      -listenonion=false
+      -zmqpubrawblock=tcp://0.0.0.0:${ZMQ_BLOCK_PORT:-38332}
+      -zmqpubhashblock=tcp://0.0.0.0:${ZMQ_BLOCK_PORT:-38332}
+      -zmqpubrawtx=tcp://0.0.0.0:${ZMQ_TX_PORT:-38333}
+      -zmqpubhashtx=tcp://0.0.0.0:${ZMQ_TX_PORT:-38333}
+      -rpcallowip=$RPCALLOWIP
+      -rpcbind=0.0.0.0
+      -rpcuser=$RPCUSER
+      -rpcpassword=$RPCPASSWORD
+  omniproxy:
+    environment:
+      MICRONAUT_CONFIG_FILES: /etc/btcproxyd/proxy-omni-testnet.yml

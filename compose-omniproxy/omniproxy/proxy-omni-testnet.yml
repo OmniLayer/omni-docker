@@ -1,0 +1,23 @@
+micronaut:
+  http:
+    client:
+      read-timeout: 600s
+
+btcproxyd:
+  rpcproxy:
+    network-id: org.bitcoin.test
+    uri: http://host.docker.internal:18332
+    username: ""
+    password: ""
+    use-zmq: true
+    allow-list:
+      - getblockcount
+      - getchaintips
+      - getbestblockhash
+      - getblockchaininfo
+      - omniproxy.getrichlist
+      - omniproxy.listproperties
+      - omniproxy.getproperty
+
+omniproxyd:
+  enabled: true

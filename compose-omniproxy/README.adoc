@@ -1,0 +1,17 @@
+= OmniProxy Docker Compose Configuration
+
+== Quick Start (RegTest)
+
+. Edit `sample.env`
+. Make sure `OMICORE_TAG` and `BTCPROXY_TAG` set to correct and/or latest versions.
+. `./run-compose.sh regtest`
+
+== Mainnet and Testnet Status
+
+Mainnet and Testnet configurations are not yet officialyl supported with Docker Compose. There
+are a few things that need to be done:
+
+1. Configure Docker directory "mounts" so blockchain data can be saved/reused
+2. Improve `btcproxyd` so it can work with blockchain that is still syncing.
+
+
