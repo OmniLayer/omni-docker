@@ -4,14 +4,29 @@
 
 . Edit `sample.env`
 . Make sure `OMICORE_TAG` and `BTCPROXY_TAG` set to correct and/or latest versions.
+. `cp sample.env .env`
+
+=== Use docker-compose directly
+
+This approach uses the default configuration files `docker-compose.yml` and `docker-compose.override.yml`.
+
+. `docker-compose up --detach`
+
+=== Use the run-compose.sh script
+
+This approach uses the configuration files `docker-compose.yml` with an "override" `.yml` file selected
+based upon the network parameter (`regtest`, `mainnet`, or `testnet`) that is passed to the script. The
+script also dynamically generates the `RPCPASSWORD` setting.
+
 . `./run-compose.sh regtest`
 
 == Mainnet and Testnet Status
 
-Mainnet and Testnet configurations are not yet officialyl supported with Docker Compose. There
+Mainnet and Testnet configurations are not yet officially supported with Docker Compose. There
 are a few things that need to be done:
 
 1. Configure Docker directory "mounts" so blockchain data can be saved/reused
-2. Improve `btcproxyd` so it can work with blockchain that is still syncing.
+2. Improve `btcproxyd` so it can work with blockchain that is still syncing (btcproxyd 0.1.9 has some
+   improvments in this area, but still needs more testing.)
 
 

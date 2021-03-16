@@ -42,8 +42,8 @@ export RPCPASSWORD="$(gen_password)"
 
 #
 # Run `docker-compose up` with the correct "override" file for the selected network,
-# and using `sample.env` for setting the remaining environment variables.
+# and using the environment variables in the hidden `.env` file.
 #
 
-docker-compose --env-file sample.env -f docker-compose.yml -f $OVERRIDE up
+docker-compose -f docker-compose.yml -f $OVERRIDE up --detach
 
