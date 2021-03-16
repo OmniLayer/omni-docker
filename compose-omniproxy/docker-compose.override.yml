@@ -32,7 +32,7 @@ services:
       -zmqpubhashblock=tcp://0.0.0.0:${ZMQ_BLOCK_PORT:-38443}
       -zmqpubrawtx=tcp://0.0.0.0:${ZMQ_TX_PORT:-38444}
       -zmqpubhashtx=tcp://0.0.0.0:${ZMQ_TX_PORT:-38444}
-      -rpcallowip=$RPCALLOWIP
+      -rpcallowip=172.18.0.1/16
       -rpcbind=0.0.0.0
       -rpcuser=$RPCUSER
       -rpcpassword=$RPCPASSWORD

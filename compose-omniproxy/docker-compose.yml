@@ -17,7 +17,6 @@ services:
     restart: "no"
     environment:
       OMNICORE_TAG:
-      RPCALLOWIP:
       RPCUSER:
       RPCPASSWORD:
       ZMQ_BLOCK_PORT:
@@ -39,3 +38,11 @@ services:
       - omnicore
     links:
       - omnicore:omnicore
+
+networks:
+  default:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+      - subnet:  172.18.0.1/16
