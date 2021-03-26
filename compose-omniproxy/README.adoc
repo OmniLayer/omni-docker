@@ -20,6 +20,10 @@ script also dynamically generates the `RPCPASSWORD` setting.
 
 . `./run-compose.sh regtest`
 
+
+NOTE:: That `.env` is in the `.gitignore` file, so you can make your changes there and not worry about
+accidentally checking in your configuration.
+
 == Mainnet and Testnet Status
 
 Mainnet and Testnet configurations are not yet officially supported with Docker Compose. There
