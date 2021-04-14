@@ -1,0 +1,100 @@
+= Notes on Copy on Write File Systems
+
+Modern copy-on-write filesystems which are optimized for SSDs can be used to quickly and efficiently replicate blockchain data files from one directory to another on the same filesystem.
+
+This document provides an overview of how to use this feature on both **macOS** and **Linux**.
+
+
+== macOS
+
+
+=== Verify APFS is installed
+Modern macOS systems with SSDs come with APFS (Apple File System) pre-installed. You can verify that your disk is using APFS with the `mount` command, like this:
+
+[source]
+----
+$ mount
+/dev/disk1s1 on / (apfs, local, journaled)
+----
+
+=== Measure storage used in the source directory and on the volume
+
+If you have been running the macOS GUI version of **Omni Core** (or **Bitcoin Core**) your blockchain data files for TestNet will be in the directory `~/Library/Application\ Support/Bitcoin/testnet3`. You can report the size of this directory on disk with:
+
+[source]
+----
+$ du -s -m ~/Library/Application\ Support/Bitcoin/testnet3
+35992	/Users/sean/Library/Application Support/Bitcoin/testnet3
+----
+
+and you can measure the total storage used and free space on your disk with:
+
+[source]
+----
+$ df -m /
+Filesystem   1M-blocks    Used Available Capacity iused               ifree %iused  Mounted on
+/dev/disk1s1   1908108 1664822    237339    88% 9899172 9223372036844876635    0%   /
+----
+
+=== Copy blockchain data  in "clonefile" mode
+
+You can "copy" the directory using the `-c` option of macOS `cp` and copy-on-write mode will be used. Assuming you've been running **Omni Core**/**Bitcoin Core** in the standard location and have checked out `omni-docker` to `~/git/omni-docker`. The following command will copy your `testnet3` data to the correct location for the `docker-compose` configuration from that repository.
+
+[source]
+----
+cp -cpR ~/Library/Application\ Support/Bitcoin/testnet3 \
+        ~/git/omni-docker/compose-omniproxy/bitcoin-data-dir/testnet3
+----
+
+The relevant options in the `cp` command are:
+
+`-c`:: Use `clonefile` mode (copy-on-write)
+`-p`:: Preserve file attributes such as owner, permissions, modification time, etc.
+`-R`:: Copy the source directory recursively (i.e. including all containing files and subdirectories)
+
+
+=== Optional: Verify your disk usage is essentially unchanged
+
+When the command finishes you can re-run `df -m /` to verify that your disk space usage is (essentially) unchanged.
+
+Note:: If you continue to run Omni or Bitcoin in both directories, new blocks and new data will be created separately in both locations and your disk space utilization will grow at twice the rate of a single installation.
+
+
+== Linux
+
+On Linux we have tested copy-on-write with the BTRFS file system (copy-on-write may also be available in other filesytems such as XFS and ZFS, but we have only tested and documented its use on BTRFS)
+
+=== Verify BTRFS is installed
+
+TBD.
+
+=== Create a BTRFS partition
+
+TBD.
+
+=== Measure storage used in the source directory and on the volume
+
+Basically the same as in **macOS**.
+
+
+=== Copy blockchain data  in "clonefile" mode
+
+You can "copy" the directory using the `cp --reflink=auto` option of the `cp` command and copy-on-write mode will be used. Assuming you've been running **Omni Core**/**Bitcoin Core** in the standard location and have checked out `omni-docker` to `~/git/omni-docker`. The following command will copy your `testnet3` data to the correct location for the `docker-compose` configuration from that repository.
+
+[source]
+----
+cp --reflink=always -pR ~/.bitcoin/testnet3 \
+        ~/git/omni-docker/compose-omniproxy/bitcoin-data-dir/testnet3
+----
+
+The relevant options in the `cp` command are:
+
+`--reflink=always`:: perform a lightweight copy, where the data blocks are copied only when modified (aka copy-on-write.) If this is not possible the copy fails
+`-R`:: Copy the source directory recursively (i.e. including all containing files and subdirectories)
+`-p`:: Preserve file attributes such as owner, permissions, modification time, etc.
+
+=== Optional: Verify your disk usage is essentially unchanged
+
+When the command finishes you can re-run `df -m /` to verify that your disk space usage is (essentially) unchanged.
+
+Note:: If you continue to run Omni or Bitcoin in both directories, new blocks and new data will be created separately in both locations and your disk space utilization will grow at twice the rate of a single installation.
