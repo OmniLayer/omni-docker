@@ -4,18 +4,16 @@ docker run --rm --name omnicored-regtest -it \
   -p 18444:18444 \
   -p 38443:38443 \
   -p 38444:38444 \
-  omnilayer/omnicored:0.9.0 \
+  omnilayer/omnicored:0.10.0 \
   -printtoconsole \
   -debug=1 \
   -regtest=1 \
   -txindex=1 \
   -omnialertallowsender=any \
   -omniactivationallowsender=any \
-  -rpcserialversion=0 \
   -addresstype=legacy \
   -limitancestorcount=750 \
   -limitdescendantcount=750 \
-  -deprecatedrpc=generate \
   -paytxfee=0.00001 \
   -minrelaytxfee=0.00001 \
   -listenonion=false \
