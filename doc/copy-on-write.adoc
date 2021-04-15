@@ -43,7 +43,7 @@ You can "copy" the directory using the `-c` option of macOS `cp` and copy-on-wri
 [source]
 ----
 cp -cpR ~/Library/Application\ Support/Bitcoin/testnet3 \
-        ~/git/omni-docker/compose-omniproxy/bitcoin-data-dir/testnet3
+        ~/git/omni-docker/compose-omniproxy/bitcoin-data-dir
 ----
 
 The relevant options in the `cp` command are:
@@ -84,7 +84,7 @@ You can "copy" the directory using the `cp --reflink=auto` option of the `cp` co
 [source]
 ----
 cp --reflink=always -pR ~/.bitcoin/testnet3 \
-        ~/git/omni-docker/compose-omniproxy/bitcoin-data-dir/testnet3
+        ~/git/omni-docker/compose-omniproxy/bitcoin-data-dir
 ----
 
 The relevant options in the `cp` command are:
