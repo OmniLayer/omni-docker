@@ -21,6 +21,7 @@ services:
       -omnialertallowsender=any
       -omniactivationallowsender=any
       -addresstype=legacy
+      -acceptnonstdtxn=1
       -limitancestorcount=750
       -limitdescendantcount=750
       -paytxfee=0.00001
