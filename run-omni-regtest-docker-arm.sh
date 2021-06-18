@@ -1,5 +1,5 @@
 #!/bin/sh
-docker run --rm --name omnicored-regtest -it \
+docker run --platform linux/arm/v7 --rm --name omnicored-regtest -it \
   -p 18443:18443 \
   -p 18444:18444 \
   -p 38443:38443 \
