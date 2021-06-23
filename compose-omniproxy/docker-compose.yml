@@ -1,5 +1,4 @@
-version: '3.9'
-
+version: '3.3'
 #
 # Base Docker Compose file for running OmniProxy and Omni Core.
 #
