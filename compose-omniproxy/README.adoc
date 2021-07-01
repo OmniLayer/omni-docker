@@ -29,8 +29,5 @@ accidentally checking in your configuration.
 Mainnet and Testnet configurations are not yet officially supported with Docker Compose. There
 are a few things that need to be done:
 
-1. Configure Docker directory "mounts" so blockchain data can be saved/reused
-2. Improve `btcproxyd` so it can work with blockchain that is still syncing (btcproxyd 0.1.9 has some
-   improvments in this area, but still needs more testing.)
-
+1. Verify OmniProxy (`btcproxyd`) can work with a blockchain that is still syncing.
 
