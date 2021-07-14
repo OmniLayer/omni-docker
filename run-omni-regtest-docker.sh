@@ -4,7 +4,7 @@ docker run --rm --name omnicored-regtest -it \
   -p 18444:18444 \
   -p 38443:38443 \
   -p 38444:38444 \
-  omnilayer/omnicored:0.10.0 \
+  omnilayer/omnicored:0.11.0 \
   -printtoconsole \
   -debug=1 \
   -regtest=1 \
