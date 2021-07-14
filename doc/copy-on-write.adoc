@@ -66,11 +66,28 @@ On Linux we have tested copy-on-write with the BTRFS file system (copy-on-write 
 
 === Verify BTRFS is installed
 
-TBD.
+BTRFS is included with most modern Linux distros. We have tested on Debian 10 ("buster") as well as on Raspberry Pi OS (64-bit beta). To format a volume you will need the `btrfs-progs` package.
 
-=== Create a BTRFS partition
 
-TBD.
+To verify it is installed
+
+. `apt -qq list btrfs-progs`
+
+To install:
+
+. `sudo apt-get install btrfs-progs`
+
+
+=== Create and mount a BTRFS partition
+
+WARNING:: Make sure you have an available partition (and be certain you are not overwriting any data!)
+
+The following example uses the device name seen on a t3.small instance on AWS EC2 with a second EBS volume mounted.
+
+. `sudo mkfs.btrfs -L bitcoin /dev/nvme1n1`
+. `sudo mkdir /bitcoin`
+. `sudo mount -t btrfs /dev/nvme1n1 /bitcoin`
+
 
 === Measure storage used in the source directory and on the volume
 
