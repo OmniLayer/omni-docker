@@ -9,6 +9,7 @@ docker run --rm --name omnicored-regtest -it \
   -debug=1 \
   -regtest=1 \
   -txindex=1 \
+  -experimental-btc-balances=1 \
   -omnialertallowsender=any \
   -omniactivationallowsender=any \
   -addresstype=legacy \
