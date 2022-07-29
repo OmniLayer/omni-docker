@@ -10,6 +10,7 @@ docker run --rm --name omnicored-testnet -v ${OMNI_SHARED_DATADIR}:/home/bitcoin
   -testnet \
   -txindex=1 \
   -experimental-btc-balances=1 \
+  -peerbloomfilters \
   -addresstype=legacy \
   -limitancestorcount=750 \
   -limitdescendantcount=750 \

@@ -10,6 +10,7 @@ docker run --rm --name omnicored-regtest -it \
   -regtest=1 \
   -txindex=1 \
   -experimental-btc-balances=1 \
+  -peerbloomfilters \
   -omnialertallowsender=any \
   -omniactivationallowsender=any \
   -addresstype=legacy \
