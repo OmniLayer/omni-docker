@@ -1,8 +1,8 @@
 = Omni Docker Project
 Sean Gilligan <https://github.com/msgilligan>
-v0.0.1
+v0.0.2
 :description: Omni Docker README document.
-:omnidocker-version: 0.0.1
+:omnidocker-version: 0.0.2
 
 [WARNING]
 This software is EXPERIMENTAL software for **REGTEST and TESTNET TRANSACTIONS** only. *USE ON MAINNET AT YOUR OWN RISK.*
@@ -14,7 +14,13 @@ This is pre-release software and APIs may change without notice.
 
 Docker tools for Omni Core (and eventually) other Omni Components.
 
+== Public Repository on Docker Hub
 
+See https://hub.docker.com/repository/docker/omnilayer/omnicored (requires login)
+
+== Quick Test/Demo of latest Omni Core docker image
+
+`docker run --rm --name omni-demo -it omnilayer/omnicored:latest -version`
 
 == Credits
 
