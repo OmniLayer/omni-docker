@@ -1,8 +1,8 @@
-= Omni Docker Project
+= Omni Docker + Podman Project
 Sean Gilligan <https://github.com/msgilligan>
-v0.0.2
+v0.0.3
 :description: Omni Docker README document.
-:omnidocker-version: 0.0.2
+:omnidocker-version: 0.0.3
 
 [WARNING]
 This software is EXPERIMENTAL software for **REGTEST and TESTNET TRANSACTIONS** only. *USE ON MAINNET AT YOUR OWN RISK.*
@@ -10,7 +10,7 @@ This software is EXPERIMENTAL software for **REGTEST and TESTNET TRANSACTIONS** 
 [CAUTION]
 This is pre-release software and APIs may change without notice.
 
-== Omni Docker
+== Omni Containers for Docker + Podman
 
 Docker tools for Omni Core (and eventually) other Omni Components.
 
@@ -21,6 +21,11 @@ See https://hub.docker.com/repository/docker/omnilayer/omnicored (requires login
 == Quick Test/Demo of latest Omni Core docker image
 
 `docker run --rm --name omni-demo -it omnilayer/omnicored:latest -version`
+
+== Recommended Podman Setup on Debian Bookworm
+
+* `sudo apt install -y podman podman-docker`
+* `sudo echo 'unqualified-search-registries = ["docker.io"]' > /etc/containers/registries.conf.d/unqualified-dockerhub.conf`
 
 == Credits
 
