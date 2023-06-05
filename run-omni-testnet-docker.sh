@@ -6,4 +6,5 @@ docker run --rm --name omnicored-testnet -v ${OMNI_SHARED_DATADIR}:/home/bitcoin
   -p 38333:38333 \
   omnilayer/omnicored:latest \
   -testnet \
-  -rpcallowip=172.17.0.0/16
+  -rpcbind=0.0.0.0 \
+  -rpcallowip=0.0.0.0/0
