@@ -1,0 +1,52 @@
+micronaut:
+  http:
+    client:
+      read-timeout: 600s
+
+btcproxyd:
+  rpcproxy:
+    network-id: org.bitcoin.test
+    uri: http://localhost:18332
+    username: bitcoinrpc
+    password: pass
+    use-zmq: true
+    allow-list:
+      - getblockcount
+      - getblock
+      - getchaintips
+      - getbestblockhash
+      - getblockchaininfo
+      - getblockstats
+      - gettxoutsetinfo
+      - getaddressinfo
+      - getaddressbalance
+      - importprivkey
+      - uptime
+      - help
+      - getrpcinfo
+      - getmemoryinfo
+      - getnetworkinfo
+      - getnettotals
+      - getpeerinfo
+      - getzmqnotifications
+      - listbanned
+      - listunspent
+      - listaddressgroupings
+      - ping
+      - scantxoutset
+      - sendrawtransaction
+      - omni_listproperties
+      - omni_getproperty
+      - omni_getallbalancesforaddress
+      - omni_getallbalancesforid
+      - btcproxy.help
+      - btcproxy.proxyinfo
+      - omniproxy.help
+      - omniproxy.getbalance
+      - omniproxy.getbalances
+      - omniproxy.getrichlist
+      - omniproxy.listproperties
+      - omniproxy.getproperty
+
+omniproxyd:
+  enabled: true
