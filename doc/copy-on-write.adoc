@@ -53,6 +53,12 @@ The relevant options in the `cp` command are:
 `-R`:: Copy the source directory recursively (i.e. including all containing files and subdirectories)
 
 
+=== Find Sparse Files
+
+on macOS:
+
+. `find . -type f -sparse`
+
 === Optional: Verify your disk usage is essentially unchanged
 
 When the command finishes you can re-run `df -m /` to verify that your disk space usage is (essentially) unchanged.
